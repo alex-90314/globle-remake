@@ -20,11 +20,16 @@ print(start.read())
 cont = input("\nPress enter to start the game\n")
 
 #generate the random country that will be used later in the code
-country_key = rand.randint(0,len(countries))
+country_key = rand.randint(1,len(countries))
 country = (countries[f"{country_key}"])
 
+#haeve the user select their unit
+distance = input("Would you like the distance in miles or kilometers?\n")
+while distance not in ("mi", "km", "kilo", "miles", "mile", "kilometers"):
+  distance = input("Would you like the distance in miles or kilometers?\n")
+
 #have the user be able to choose their difficulty
-print("difficulties: easy (10 guesses)/normal (5 guesses)/hard (3 guesses)")
+print("\ndifficulties: easy (10 guesses)/normal (5 guesses)/hard (3 guesses)")
 user_dif = input("Enter desired difficulty: ")
 
 if user_dif in ("easy", "Easy", "normal", "Normal", "hard", "Hard"):
@@ -62,6 +67,9 @@ for i in range(guess):
       created_country_latlong = (f"{lat}, {long}")
       country, lat, long = (countries_latlongs.get(guess_country_key))
       guess_country_latlong = (f"{lat}, {long}")
-      print(f"{Fore.RED}Not quite, you are {round((geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km)} km away")
-      print(f"{Fore.RED}Not quite, you are {round((geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi)} mi away")
-      print(Style.RESET_ALL)
+      if "mi" in distance:
+        print(f"{Fore.RED}Not quite, you are {round((geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi)} mi away")
+        print(Style.RESET_ALL)
+      elif "km" or "kilo" in distance:
+        print(f"{Fore.RED}Not quite, you are {round((geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km)} km away")
+        print(Style.RESET_ALL)
