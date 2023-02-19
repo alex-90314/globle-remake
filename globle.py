@@ -28,7 +28,7 @@ if user_dif in ("easy", "Easy", "normal", "Normal", "hard", "Hard"):
     guess = 5
   elif user_dif == "hard" or user_dif == "Hard":
     guess = 3
-  
+
 #print the chosen country ascii & clear the screen
 os.system("cls")
 key2 = (country)
