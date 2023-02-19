@@ -9,7 +9,7 @@ from colorama import Fore, Style
 def guess_key(c:str)->int:
   for key, value in countries.items():
     if value == c:
-      return key
+      return int(key)
   return -1
 
 #main code block
@@ -54,13 +54,14 @@ for i in range(guess):
     break
   else:
     #use the key generated before to obtain that countries latitude and longitude
-    country, lat, long = (countries_latlongs.get(country_key))
-    created_country_latlong = (f"{lat}, {long}")
-    guess_country_key = print(f"hi {guess_key(country_guess)}")
+    guess_country_key = guess_key(country_guess)
     if guess_country_key == -1:
-      print("hi -1")
-    country, lat, long = (countries_latlongs.get(guess_country_key))
-    guess_country_latlong = (f"{lat}, {long}")
-    print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km} away")
-    print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi} away")
-    print(Style.RESET_ALL)
+      print("Not in our database")
+    else:
+      country, lat, long = (countries_latlongs.get(country_key))
+      created_country_latlong = (f"{lat}, {long}")
+      country, lat, long = (countries_latlongs.get(guess_country_key))
+      guess_country_latlong = (f"{lat}, {long}")
+      print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km} away")
+      print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi} away")
+      print(Style.RESET_ALL)
