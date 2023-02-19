@@ -31,7 +31,9 @@ while distance not in ("mi", "km", "kilo", "miles", "mile", "kilometers"):
 #have the user be able to choose their difficulty
 print("\ndifficulties: easy (10 guesses)/normal (5 guesses)/hard (3 guesses)")
 user_dif = input("Enter desired difficulty: ")
-
+while user_dif not in ("easy", "Easy", "normal", "Normal", "hard", "Hard"):
+  user_dif = input("Enter desired difficulty: ")
+  
 if user_dif in ("easy", "Easy", "normal", "Normal", "hard", "Hard"):
   if user_dif == "easy" or user_dif == "Easy":
     guess = 10
