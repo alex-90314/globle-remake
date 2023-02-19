@@ -4,12 +4,13 @@ from countries_database import countries, country_img, countries_latlongs
 import geopy.distance
 import os
 import keyboard
+from colorama import Fore, Style
 
 #main code block
 #start the game by displaying a welcome text & clearing the screen
 os.system("cls")
 start = open('welcome_banner.txt','r')
-print (start.read())
+print(start.read())
 cont = input("\nPress enter to start the game\n")
 
 #generate the random country that will be used later in the code
@@ -36,20 +37,24 @@ f = open(f'country_ascii/{country_file}.txt','r')
 print(f.read())
 
 #prompt the user for their guess
-print (country)
-print (f"input the country name using caps and '_' instead of spaces\nex. United_States")
+if cont == "dev":
+  print(country)
+print(f"input the country name using caps and '_' instead of spaces\nex. United_States")
 for i in range(guess):
   country_guess = input("Guess country: ")
   if country_guess == country:
-    print ("You got it")
+    print(Fore.GREEN + "You got it")
+    print(Style.RESET_ALL)
     break
   else:
-    print (country)
+    print(Fore.RED + "not quite, try again")
+    print(Style.RESET_ALL)
     #use the key generated before to obtain the same countries latitude and longitude
-'''    country, lat, long = (countries_latlongs.get(key))
+'''
+    country, lat, long = (countries_latlongs.get(key))
     created_country_latlong = (f"{lat}, {long}")
     country, lat, long = (countries_latlongs.get(guess_key))
     guess_country_latlong = (f"{lat}, {long}")
-    print (f"Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km} away")
-    print (f"Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi} away")'''
-  
+    print(f"Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km} away")
+    print(f"Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi} away")
+'''
