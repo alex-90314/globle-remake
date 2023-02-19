@@ -5,6 +5,11 @@ import geopy.distance
 import os
 from colorama import Fore, Style
 
+#function definitions
+def goto(linenum):
+    global line
+    line = linenum
+
 #main code block
 #start the game by displaying a welcome text & clearing the screen
 os.system("cls")
@@ -27,6 +32,9 @@ if user_dif in ("easy", "Easy", "normal", "Normal", "hard", "Hard"):
     guess = 5
   elif user_dif == "hard" or user_dif == "Hard":
     guess = 3
+else:
+  print("incorrect input")
+  goto(24)
 
 #print the chosen country ascii & clear the screen
 os.system("cls")
