@@ -10,6 +10,7 @@ def guess_key(c:str)->int:
   for key, value in countries.items():
     if value == c:
       return key
+  return -1
 
 #main code block
 #start the game by displaying a welcome text & clearing the screen
@@ -19,8 +20,8 @@ print(start.read())
 cont = input("\nPress enter to start the game\n")
 
 #generate the random country that will be used later in the code
-key = rand.randint(0,len(countries))
-country = (countries[f"{key}"])
+country_key = rand.randint(0,len(countries))
+country = (countries[f"{country_key}"])
 
 #have the user be able to choose their difficulty
 print("difficulties: easy (10 guesses)/normal (5 guesses)/hard (3 guesses)")
@@ -36,8 +37,8 @@ if user_dif in ("easy", "Easy", "normal", "Normal", "hard", "Hard"):
 
 #print the chosen country ascii & clear the screen
 os.system("cls")
-key2 = (country)
-country_file = country_img[key2]
+country_ascii_key = (country)
+country_file = country_img[country_ascii_key]
 f = open(f'country_ascii/{country_file}.txt','r')
 print(f.read())
 
@@ -53,9 +54,12 @@ for i in range(guess):
     break
   else:
     #use the key generated before to obtain that countries latitude and longitude
-    country, lat, long = (countries_latlongs.get(key))
+    country, lat, long = (countries_latlongs.get(country_key))
     created_country_latlong = (f"{lat}, {long}")
-    country, lat, long = (countries_latlongs.get(print(guess_key(country_guess))))
+    guess_country_key = print(f"hi {guess_key(country_guess)}")
+    if guess_country_key == -1:
+      print("hi -1")
+    country, lat, long = (countries_latlongs.get(guess_country_key))
     guess_country_latlong = (f"{lat}, {long}")
     print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km} away")
     print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi} away")
