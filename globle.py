@@ -56,12 +56,12 @@ for i in range(guess):
     #use the key generated before to obtain that countries latitude and longitude
     guess_country_key = guess_key(country_guess)
     if guess_country_key == -1:
-      print("Not in our database")
+      print("Not in our database\n")
     else:
       country, lat, long = (countries_latlongs.get(country_key))
       created_country_latlong = (f"{lat}, {long}")
       country, lat, long = (countries_latlongs.get(guess_country_key))
       guess_country_latlong = (f"{lat}, {long}")
-      print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km} away")
-      print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi} away")
+      print(f"{Fore.RED}Not quite, you are {round((geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km)} km away")
+      print(f"{Fore.RED}Not quite, you are {round((geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi)} mi away")
       print(Style.RESET_ALL)
