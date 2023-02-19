@@ -1,9 +1,13 @@
+#imported modules
 import random as rand
 from countries_database import countries, country_img, countries_latlongs
 import geopy.distance
+import os
+import keyboard
 
 #main code block
-#start the game by displaying a welcome text
+#start the game by displaying a welcome text & clearing the screen
+os.system("cls")
 start = open('welcome_banner.txt','r')
 print (start.read())
 cont = input("\nPress enter to start the game\n")
@@ -24,8 +28,8 @@ if user_dif in ("easy", "Easy", "normal", "Normal", "hard", "Hard"):
   elif user_dif == "hard" or user_dif == "Hard":
     guess = 3
   
-#print the chosen country ascii 
-print ("\n"*12)
+#print the chosen country ascii & clear the screen
+os.system("cls")
 key2 = (country)
 country_file = country_img[key2]
 f = open(f'country_ascii/{country_file}.txt','r')

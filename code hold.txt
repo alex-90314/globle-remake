@@ -1,7 +1,0 @@
-    #use the key generated before to obtain the same countries latitude and longitude
-    country, lat, long = (countries_latlongs.get(key))
-    created_country_latlong = (f"{lat}, {long}")
-    country, lat, long = (countries_latlongs.get(guess_key))
-    guess_country_latlong = (f"{lat}, {long}")
-    print (f"Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km} away")
-    print (f"Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi} away")
