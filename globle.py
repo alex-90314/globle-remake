@@ -6,9 +6,10 @@ import os
 from colorama import Fore, Style
 
 #function definitions
-def goto(linenum):
-    global line
-    line = linenum
+def guess_key(c:str)->int:
+  for key, value in countries.items():
+    if value == c:
+      return key
 
 #main code block
 #start the game by displaying a welcome text & clearing the screen
@@ -32,9 +33,6 @@ if user_dif in ("easy", "Easy", "normal", "Normal", "hard", "Hard"):
     guess = 5
   elif user_dif == "hard" or user_dif == "Hard":
     guess = 3
-else:
-  print("incorrect input")
-  goto(24)
 
 #print the chosen country ascii & clear the screen
 os.system("cls")
@@ -54,14 +52,11 @@ for i in range(guess):
     print(Style.RESET_ALL)
     break
   else:
-    print(Fore.RED + "not quite, try again")
-    print(Style.RESET_ALL)
-    #use the key generated before to obtain the same countries latitude and longitude
-'''
+    #use the key generated before to obtain that countries latitude and longitude
     country, lat, long = (countries_latlongs.get(key))
     created_country_latlong = (f"{lat}, {long}")
-    country, lat, long = (countries_latlongs.get(guess_key))
+    country, lat, long = (countries_latlongs.get(print(guess_key(country_guess))))
     guess_country_latlong = (f"{lat}, {long}")
-    print(f"Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km} away")
-    print(f"Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi} away")
-'''
+    print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).km} away")
+    print(f"{Fore.RED}Not quite, you are {(geopy.distance.geodesic(guess_country_latlong, created_country_latlong)).mi} away")
+    print(Style.RESET_ALL)
