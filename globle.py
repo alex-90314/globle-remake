@@ -3,7 +3,6 @@ import random as rand
 from countries_database import countries, country_img, countries_latlongs
 import geopy.distance
 import os
-import keyboard
 from colorama import Fore, Style
 
 #main code block
