@@ -1,9 +1,12 @@
 #imported modules
-import random as rand
-from countries_database import countries, country_img, countries_latlongs
-import geopy.distance
 import os
+import random as rand
+
+import geopy.distance
 from colorama import Fore, Style
+
+from countries_database import countries, countries_latlongs, country_img
+
 
 #function definitions
 def guess_key(c:str)->int:
