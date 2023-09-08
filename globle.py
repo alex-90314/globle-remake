@@ -17,12 +17,7 @@ def guess_key(c:str)->int:
 
 #main code block
 #start the game by displaying a welcome text & clearing the screen
-try:
-	os.system("cls")
-	os.system("clear")
-except:
-	None
-
+os.system("cls")
 start = open('welcome_banner.txt','r')
 print(start.read())
 cont = input("\nPress enter to start the game\n")
@@ -31,7 +26,7 @@ cont = input("\nPress enter to start the game\n")
 country_key = rand.randint(1,len(countries))
 country = (countries[f"{country_key}"])
 
-#have the user select their unit
+#haeve the user select their unit
 distance = input("Would you like the distance in miles or kilometers?\n")
 while distance not in ("mi", "km", "kilo", "miles", "mile", "kilometers"):
   distance = input("Would you like the distance in miles or kilometers?\n")
