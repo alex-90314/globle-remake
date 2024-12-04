@@ -26,12 +26,12 @@ cont = input("\nPress enter to start the game\n")
 country_key = rand.randint(1,len(countries))
 country = (countries[f"{country_key}"])
 
-#haeve the user select their unit
+#have the user select their unit
 distance = input("Would you like the distance in miles or kilometers?\n")
 while distance not in ("mi", "km", "kilo", "miles", "mile", "kilometers"):
   distance = input("Would you like the distance in miles or kilometers?\n")
 
-#have the user be able to choose their difficulty
+#have the user choose their difficulty
 print("\ndifficulties: easy (10 guesses)/normal (5 guesses)/hard (3 guesses)")
 user_dif = input("Enter desired difficulty: ")
 while user_dif not in ("easy", "Easy", "normal", "Normal", "hard", "Hard"):
